@@ -54,10 +54,22 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 function showCity(response) {
   let temperature = Math.round(response.data.main.temp);
   let city = response.data.name;
+  let description = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
+  let precipitation = response.data.clouds.all;
+  let wind = Math.round(response.data.wind.speed);
   let currentCity = document.querySelector(".current_city");
   currentCity.innerHTML = `${city}`;
   let currentTemperature = document.querySelector("#temperature-now");
   currentTemperature.innerHTML = `${temperature}`;
+  let currentSky = document.querySelector(".current_weather");
+  currentSky.innerHTML = `${description}`;
+  let currentHumidity = document.querySelector("#humidity");
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  let currentPrecipitation = document.querySelector("#precipitation");
+  currentPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
+  let currentWind = document.querySelector("#wind");
+  currentWind.innerHTML = `Wind: ${wind}km/h`;
 }
 
 function showPosition(position) {
@@ -77,8 +89,8 @@ currentLocation.addEventListener("click", getCurrentPosition);
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
-  let description = response.data.weather[0].description;
   let city = response.data.name;
+  let description = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
   let precipitation = response.data.clouds.all;
   let wind = Math.round(response.data.wind.speed);

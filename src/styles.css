@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  margin: 40px 270px;
+  margin: 25px 270px;
   border: thick double #fdf07d;
   border-radius: 15%;
   padding: 29px 29px;
@@ -94,4 +94,15 @@ img.current_weather_image {
 #celsius-link,
 #fahrenheit-link {
   text-decoration: none;
+}
+#current_location {
+  background-color: #fdf07d;
+  color: #ff0000;
+  transition: color 0.15s ease-in-out;
+  text-align: center;
+}
+#current_location:hover {
+  color: var(--bs-btn-hover-color);
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
 }
