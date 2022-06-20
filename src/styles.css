@@ -1,16 +1,20 @@
 body {
-  text-align: center;
-  margin: 25px 270px;
-  border: thick double #fdf07d;
-  border-radius: 15%;
-  padding: 29px 29px;
   background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
+
 li {
   font-size: 13px;
   list-style: none;
   text-align: left;
   font-family: "Changa", sans-serif;
+}
+.wrap {
+  text-align: center;
+  margin: 10px 270px;
+  border: thick double #fdf07d;
+  border-radius: 15%;
+  padding: 29px 29px;
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 .form-control {
   text-align: center;
@@ -77,6 +81,13 @@ img.current_weather_image {
 .temperature-now {
   display: block;
   text-align: left;
+}
+
+.source-link {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 6px;
 }
 
 #enter-your-location {

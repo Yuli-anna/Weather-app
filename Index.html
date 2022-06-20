@@ -23,137 +23,156 @@
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <form id="search-form">
-        <div class="row">
-          <div class="col-6" id="enter-your-location">
-            <div class="mb-3">
+    <div class="wrap">
+      <div class="container">
+        <form id="search-form">
+          <div class="row">
+            <div class="col-6" id="enter-your-location">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your location"
+                  id="searchCity"
+                />
+              </div>
+            </div>
+            <div class="col-3">
               <input
-                type="text"
-                class="form-control"
-                placeholder="Enter your location"
-                id="searchCity"
+                type="submit"
+                value="Search"
+                class="search_button btn btn-primary"
               />
             </div>
-          </div>
-          <div class="col-3">
-            <input
-              type="submit"
-              value="Search"
-              class="search_button btn btn-primary"
-            />
-          </div>
-          <div class="col-3">
-            <input
-              type="submit"
-              value="Current location"
-              class="search_button btn btn-primary"
-              id="current_location"
-            />
-          </div>
-          <br />
-        </div>
-      </form>
-      <div class="row">
-        <div class="col-5">
-          <div class="current_city">Your place</div>
-          <div class="current_date" id="current-date">
-            Tuesday, 21st May 2022
-          </div>
-          <div class="current_weather"></div>
-        </div>
-        <div class="col-3">
-          <div class="temperature-now">
-            <span class="weather" id="temperature-now"> </span>
-            <span class="units">
-              <a href="#" id="celsius-link">°C</a> |
-              <a href="#" id="fahrenheit-link">°F</a>
-            </span>
-          </div>
-          <ul class="weather-details">
-            <li id="precipitation">Precipitation</li>
-            <li id="humidity">Humidity</li>
-            <li id="wind">Wind</li>
-          </ul>
-        </div>
-        <div class="col-4">
-          <img
-            src="Images/sunny.svg"
-            alt=""
-            width="150"
-            class="current_weather_image"
-          />
-        </div>
-      </div>
-
-      <div class="row days-of-week">
-        <div class="col-2">
-          <div class="card form-control" style="width: 6rem">
-            <p class="weekname">Today</p>
-            <img
-              src="Images/sun.svg"
-              class="card-img-top weekday_image"
-              alt=""
-            />
-            <div class="card-body weekday_temperature">
-              <p class="card-text" id="temperature"><strong>20</strong> / 10</p>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Current location"
+                class="search_button btn btn-primary"
+                id="current_location"
+              />
             </div>
+            <br />
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-5">
+            <div class="current_city">Your place</div>
+            <div class="current_date" id="current-date">
+              Tuesday, 21st May 2022
+            </div>
+            <div class="current_weather"></div>
+          </div>
+          <div class="col-3">
+            <div class="temperature-now">
+              <span class="weather" id="temperature-now"> </span>
+              <span class="units">
+                <a href="#" id="celsius-link">°C</a> |
+                <a href="#" id="fahrenheit-link">°F</a>
+              </span>
+            </div>
+            <ul class="weather-details">
+              <li id="precipitation">Precipitation</li>
+              <li id="humidity">Humidity</li>
+              <li id="wind">Wind</li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <img
+              src="Images/sunny.svg"
+              alt=""
+              width="150"
+              class="current_weather_image"
+            />
           </div>
         </div>
 
-        <div class="col-2">
-          <div class="card form-control" style="width: 6rem">
-            <p class="weekname">Tomorrow</p>
-            <img
-              src="Images/rain.svg"
-              class="card-img-top weekday_image"
-              alt=""
-            />
-            <div class="card-body weekday_temperature">
-              <p class="card-text" id="temperature"><strong>22</strong> / 11</p>
+        <div class="row days-of-week">
+          <div class="col-2">
+            <div class="card form-control" style="width: 6rem">
+              <p class="weekname">Today</p>
+              <img
+                src="Images/sun.svg"
+                class="card-img-top weekday_image"
+                alt=""
+              />
+              <div class="card-body weekday_temperature">
+                <p class="card-text" id="temperature">
+                  <strong>20</strong> / 10
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-2">
-          <div class="card form-control" style="width: 6rem">
-            <p class="weekname">Thursday</p>
-            <img
-              src="Images/cloudy.svg"
-              class="card-img-top weekday_image"
-              alt=""
-            />
-            <div class="card-body weekday_temperature">
-              <p class="card-text" id="temperature"><strong>25</strong> / 13</p>
+
+          <div class="col-2">
+            <div class="card form-control" style="width: 6rem">
+              <p class="weekname">Tomorrow</p>
+              <img
+                src="Images/rain.svg"
+                class="card-img-top weekday_image"
+                alt=""
+              />
+              <div class="card-body weekday_temperature">
+                <p class="card-text" id="temperature">
+                  <strong>22</strong> / 11
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-2">
-          <div class="card form-control" style="width: 6rem">
-            <p class="weekname">Friday</p>
-            <img
-              src="Images/windy.svg"
-              class="card-img-top weekday_image"
-              alt=""
-            />
-            <div class="card-body weekday_temperature">
-              <p class="card-text" id="temperature"><strong>21</strong> / 10</p>
+          <div class="col-2">
+            <div class="card form-control" style="width: 6rem">
+              <p class="weekname">Thursday</p>
+              <img
+                src="Images/cloudy.svg"
+                class="card-img-top weekday_image"
+                alt=""
+              />
+              <div class="card-body weekday_temperature">
+                <p class="card-text" id="temperature">
+                  <strong>25</strong> / 13
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-2">
-          <div class="card form-control" style="width: 6rem">
-            <p class="weekname">Saturday</p>
-            <img
-              src="Images/rain with wind.svg"
-              class="card-img-top weekday_image"
-              alt=""
-            />
-            <div class="card-body weekday_temperature">
-              <p class="card-text" id="temperature"><strong>25</strong> / 15</p>
+          <div class="col-2">
+            <div class="card form-control" style="width: 6rem">
+              <p class="weekname">Friday</p>
+              <img
+                src="Images/windy.svg"
+                class="card-img-top weekday_image"
+                alt=""
+              />
+              <div class="card-body weekday_temperature">
+                <p class="card-text" id="temperature">
+                  <strong>21</strong> / 10
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="card form-control" style="width: 6rem">
+              <p class="weekname">Saturday</p>
+              <img
+                src="Images/rain with wind.svg"
+                class="card-img-top weekday_image"
+                alt=""
+              />
+              <div class="card-body weekday_temperature">
+                <p class="card-text" id="temperature">
+                  <strong>25</strong> / 15
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="source-link">
+      <small
+        ><a href="https://github.com/Yuli-anna/Weather-app" target="_blank"
+          >Open-source code</a
+        >, by Juliana Voznyuk</small
+      >
     </div>
     <script src="src/index.js"></script>
   </body>
