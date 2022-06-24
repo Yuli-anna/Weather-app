@@ -58,6 +58,7 @@ function showCity(response) {
   let humidity = response.data.main.humidity;
   let precipitation = response.data.clouds.all;
   let wind = Math.round(response.data.wind.speed);
+  let icon = response.data.weather[0].icon;
   let currentCity = document.querySelector(".current_city");
   currentCity.innerHTML = `${city}`;
   let currentTemperature = document.querySelector("#temperature-now");
@@ -70,6 +71,11 @@ function showCity(response) {
   currentPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind: ${wind}km/h`;
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 function showPosition(position) {
@@ -94,6 +100,7 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let precipitation = response.data.clouds.all;
   let wind = Math.round(response.data.wind.speed);
+  let icon = response.data.weather[0].icon;
   let currentTemperature = document.querySelector("#temperature-now");
   currentTemperature.innerHTML = `${temperature}`;
   let currentCity = document.querySelector(".current_city");
@@ -106,6 +113,11 @@ function showTemperature(response) {
   currentPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Wind: ${wind}km/h`;
+  let currentIcon = document.querySelector("#icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 function search(event) {
