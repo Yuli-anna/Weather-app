@@ -40,6 +40,37 @@ if (minutes < 10) {
 }
 currentDateTime.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row days-of-week">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col-2">
+            <div class="card form-control" style="width: 6rem">
+              <p class="weekname">${day}</p>
+              <img
+                src="Images/sun.svg"
+                class="card-img-top weekday_image"
+                alt=""
+              />
+              <div class="card-body weekday_temperature">
+                <p class="card-text" id="temperature">
+                  <strong>20</strong> / 10
+                </p>
+              </div>
+            </div>
+          </div>
+          `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   celsiusTemperature = response.data.main.temp;
   let temperature = Math.round(celsiusTemperature);
@@ -119,3 +150,5 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+displayForecast();
