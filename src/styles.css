@@ -1,6 +1,7 @@
 body {
   background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   width: 100%;
+  min-height: 100vh;
 }
 
 li {
@@ -13,7 +14,7 @@ li {
   text-align: center;
   width: 723px;
   height: 519px;
-  margin: 5px 270px;
+  margin: 15px 270px 5px 270px;
   border: thick double #fdf07d;
   border-radius: 15%;
   padding: 29px 29px;
@@ -90,7 +91,6 @@ img.current_weather_image {
   display: block;
   margin: 0 auto;
   text-align: center;
-  padding-bottom: 6px;
 }
 
 #enter-your-location {
