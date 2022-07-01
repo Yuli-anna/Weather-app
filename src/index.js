@@ -40,26 +40,28 @@ if (minutes < 10) {
 }
 currentDateTime.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row days-of-week">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
   <div class="col-2">
             <div class="card form-control" style="width: 6rem">
-              <p class="weekname">${day}</p>
+              <p class="weekname">${forecastDay.dt}</p>
               <img
-                src="Images/sun.svg"
+                src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
                 class="card-img-top weekday_image"
                 alt=""
               />
               <div class="card-body weekday_temperature">
                 <p class="card-text" id="temperature">
-                  <strong>20</strong> / 10
+                  <strong>${forecastDay.temp.max}°</strong> / ${forecastDay.temp.min}°
                 </p>
               </div>
             </div>
@@ -72,9 +74,8 @@ function displayForecast() {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "c0d9a61baa256b27b3480e2a880cf387";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=hourly,minutely&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -159,3 +160,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 displayForecast();
+console.log(response.data);
