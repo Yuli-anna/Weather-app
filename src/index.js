@@ -40,6 +40,14 @@ if (minutes < 10) {
 }
 currentDateTime.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}`;
 
+function formatDay(timestamp) {
+  let date = newDate(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
 
@@ -47,26 +55,33 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row days-of-week">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="col-2">
             <div class="card form-control" style="width: 6rem">
-              <p class="weekname">${forecastDay.dt}</p>
+              <p class="weekname">${formatDay(forecastDay.dt)}</p>
+              ${index}
               <img
-                src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
                 class="card-img-top weekday_image"
                 alt=""
               />
               <div class="card-body weekday_temperature">
                 <p class="card-text" id="temperature">
-                  <strong>${forecastDay.temp.max}°</strong> / ${forecastDay.temp.min}°
+                  <strong>${Math.round(
+                    forecastDay.temp.max
+                  )}°</strong> / ${Math.round(forecastDay.temp.min)}°
                 </p>
               </div>
             </div>
           </div>
           `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -160,4 +175,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 displayForecast();
-console.log(response.data);
