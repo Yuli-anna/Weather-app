@@ -105,10 +105,7 @@ img.current_weather_image {
   font-family: "Changa", sans-serif;
   font-size: 45px;
 }
-#celsius-link,
-#fahrenheit-link {
-  text-decoration: none;
-}
+
 #current_location {
   background-color: #fdf07d;
   color: #ff0000;

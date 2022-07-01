@@ -41,7 +41,7 @@ if (minutes < 10) {
 currentDateTime.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}`;
 
 function formatDay(timestamp) {
-  let date = newDate(timestamp * 1000);
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -63,7 +63,6 @@ function displayForecast(response) {
   <div class="col-2">
             <div class="card form-control" style="width: 6rem">
               <p class="weekname">${formatDay(forecastDay.dt)}</p>
-              ${index}
               <img
                 src="http://openweathermap.org/img/wn/${
                   forecastDay.weather[0].icon
@@ -114,12 +113,13 @@ function showTemperature(response) {
   let currentPrecipitation = document.querySelector("#precipitation");
   currentPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
   let currentWind = document.querySelector("#wind");
-  currentWind.innerHTML = `Wind: ${wind}km/h`;
+  currentWind.innerHTML = `Wind: ${wind}m/h`;
   let currentIcon = document.querySelector("#icon");
   currentIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function showPosition(position) {
@@ -148,30 +148,9 @@ function search(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature-now");
-  temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature-now");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
 let currentLocation = document.querySelector("#current_location");
 currentLocation.addEventListener("click", getCurrentPosition);
-
-let celsiusTemperature = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-displayForecast();
